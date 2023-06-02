@@ -1,0 +1,29 @@
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+}
+
+:root {
+    --bg-color: #FFE79B;
+    --btn-hover: #DD58D6;
+    --dark-color: #40128B;
+    --btn-color: #9336B4;
+}
+
+body {
+    height: 100vh;
+    background: var(--bg-color);
+}
+
+header {
+    height: 15vh;
+    background: rgb(175, 175, 190);
+    font-size: 5em;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-weight: 700;
+    background: var(--dark-color);
+    color: #ffffff;
+    box-shadow: 0px 5px 20px var(--dark-color);
+}
