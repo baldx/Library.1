@@ -85,11 +85,11 @@ header {
     font-weight: 700;
 }
 
-.title, .author, .pages, .book button {
+.title, .author, .pages, .read {
     justify-self: center;
 }
 
-.book button {
+.read {
     font-size: 1em;
     height: 2em;
     width: 10em;
@@ -98,12 +98,6 @@ header {
     background: var(--btn-hover);
     color: white;
     font-weight: 700;
-}
-
-.book button:hover {
-    color: #ffffff;
-    background: var(--btn-color);
-    border-radius: 15px;
     transition: 200ms;
 }
 
