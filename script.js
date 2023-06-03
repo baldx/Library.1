@@ -2,6 +2,18 @@ let myLibrary = [];
 
 
 let readBtn = document.querySelectorAll(".readBtn");
+let addBookBtn = document.querySelector(".addBook");
+let removeBook = document.querySelectorAll(".remove");
+
+function Book(title, author, pages) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+}
+
+function addBookToLibrary() {
+    //do shit here
+}
 
 readBtn.forEach(element => {
     element.addEventListener("click", () => {
@@ -14,11 +26,12 @@ readBtn.forEach(element => {
     })
 });
 
-function Book() {
-    //constructor
+addBookBtn.onclick = () => {
+    console.log("test");
 }
 
-function addBookToLibrary() {
-    //do shit here
-}
-
+removeBook.forEach(element => {
+    element.addEventListener("click", () => {
+        element.parentNode.remove(element.parentNode)
+    })
+})
