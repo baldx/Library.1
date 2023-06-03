@@ -1,4 +1,4 @@
-let myLibrary = [];
+let myLibrary = [1, 2, 3, 4, 5, 6];
 
 
 let readBtn = document.querySelectorAll(".readBtn");
@@ -32,6 +32,7 @@ addBookBtn.onclick = () => {
 
 removeBook.forEach(element => {
     element.addEventListener("click", () => {
-        element.parentNode.remove(element.parentNode)
+        element.parentNode.remove(element.parentNode);
+        myLibrary.pop();
     })
 })
