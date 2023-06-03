@@ -35,13 +35,15 @@
             <button class="readBtn read">Read</button>
             <button class="remove">Remove</button>
         </div>
-        <div class="book">
-            <div class="title">Author: Abdi</div>
-            <div class="author">Title: Mokandez den tredje</div>
-            <div class="pages">pages: 420</div>
-            <button class="readBtn read">Read</button>
-            <button class="remove">Remove</button>
-        </div>
+        <form>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" required>
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" required>
+            <label for="pages">Pages</label>
+            <input type="number" name="number" id="number" required>
+            <button type="submit">Add book</button>
+        </form>
     </div>
 </body>
 </html>
