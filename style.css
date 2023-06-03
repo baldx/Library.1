@@ -64,7 +64,6 @@ header {
 /*BOOK STYLES*/
 
 .library {
-    background: #ffffff;
     height: 70vh;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -74,10 +73,42 @@ header {
 }
 
 .book {
-    background: #d0bfeb;
+    background: var(--dark-color);
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     justify-content: center;
     align-content: center;
-    font-size: 2em;
+    font-size: 1.7em;
+    padding: 0.7em;
+    border-radius: 15px;
+    color: white;
+    font-weight: 700;
+}
+
+.title, .author, .pages, .book button {
+    justify-self: center;
+}
+
+.book button {
+    font-size: 1em;
+    height: 2em;
+    width: 10em;
+    border: none;
+    border-radius: 15px;
+    background: var(--btn-hover);
+    color: white;
+    font-weight: 700;
+}
+
+.book button:hover {
+    color: #ffffff;
+    background: var(--btn-color);
+    border-radius: 15px;
+    transition: 200ms;
+}
+
+.not-read {
+    background-color: var(--btn-color);
+    border-radius: 15px;
+    transition: 200ms;
 }
