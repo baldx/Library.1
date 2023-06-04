@@ -7,7 +7,6 @@ let myLibrary = [
     }
 ];
 
-
 let readBtn = document.querySelectorAll(".readBtn");
 let addBookBtn = document.querySelector(".addBook");
 let removeBook = document.querySelectorAll(".remove");
@@ -31,13 +30,19 @@ function addBookToLibrary() {
     let author = authorInput.value;
     let pages = pagesInput.value;
     let read = getReadValue();
-    let newBook = new Book(title, author, pages);
+    let newBook = new Book(title, author, pages, read);
     library.push(newBook);
 }
 
 const getReadValue = () => {
     if (form.querySelector('input[name="read"]:checked').value == "yes") return true;
     else return false;
+}
+
+const clearForm = () => {
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
 }
 
 readBtn.forEach(element => {
@@ -51,7 +56,7 @@ readBtn.forEach(element => {
     })
 });
 
-addBookBtn.onclick = () => {
+ addBookBtn.onclick = () => {
     library.innerHTML += `
     <form>
             <label for="title">Title</label>
