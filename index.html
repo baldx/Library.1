@@ -37,11 +37,11 @@
         </div>
         <form>
             <label for="title">Title</label>
-            <input type="text" name="title" id="title" required>
+            <input type="text" name="title" id="title" required maxlength="50">
             <label for="author">Author</label>
-            <input type="text" name="author" id="author" required>
+            <input type="text" name="author" id="author" required maxlength="50">
             <label for="pages">Pages</label>
-            <input type="number" name="number" id="number" required>
+            <input type="number" name="number" id="number" required min="0">
             <button type="submit">Add book</button>
         </form>
     </div>
