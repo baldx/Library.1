@@ -107,3 +107,49 @@ header {
     border-radius: 15px;
     transition: 200ms;
 }
+
+/*FORM STYLES*/
+
+form {
+    box-sizing: border-box;
+    background: var(--dark-color);
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr 5fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1em;
+    font-size: 1.2em;
+    border-radius: 15px;
+    padding: 1em;
+    font-weight: 700;
+}
+
+input[type="text"], input[type="number"] {
+    height: 2em;
+    border: none;
+    border-radius: 15px;
+    padding: 16px;
+}
+
+form button {
+    font-size: 1.5em;
+    height: 2em;
+    width: 10em;
+    border: none;
+    border-radius: 15px;
+    background: var(--btn-hover);
+    color: white;
+    font-weight: 700;
+    transition: 200ms;
+    grid-column-start: 2;
+
+}
+
+input:focus {
+    border: 2px solid var(--btn-hover);
+    outline: none;
+}
+
+input:invalid {
+    border: 2px solid #8b1232;
+}
