@@ -1,9 +1,10 @@
-let myLibrary = [1, 2, 3, 4, 5, 6];
+let myLibrary = [1, 2, 3, 4];
 
 
 let readBtn = document.querySelectorAll(".readBtn");
 let addBookBtn = document.querySelector(".addBook");
 let removeBook = document.querySelectorAll(".remove");
+let library = document.querySelector(".library");
 
 function Book(title, author, pages) {
     this.title = title;
@@ -27,7 +28,17 @@ readBtn.forEach(element => {
 });
 
 addBookBtn.onclick = () => {
-    console.log("test");
+    library.innerHTML += `
+    <form>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" required maxlength="50">
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" required maxlength="50">
+        <label for="pages">Pages</label>
+        <input type="number" name="number" id="number" required min="0">
+        <button type="submit">Add book</button>
+    </form>
+    `
 }
 
 removeBook.forEach(element => {
