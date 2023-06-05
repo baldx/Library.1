@@ -65,7 +65,12 @@ readBtn.forEach(element => {
 });
 
 
-
+removeBook.forEach(element => {
+    element.addEventListener("click", () => {
+        element.parentNode.remove(element.parentNode);
+        myLibrary.pop();
+    })
+})
 
 function createBook(item) {
     const bookDiv = document.createElement("div");
@@ -107,10 +112,13 @@ function createBook(item) {
 
     library.appendChild(bookDiv);
 
-    removeBook.forEach(element => {
-        element.addEventListener("click", () => {
-            element.parentNode.remove(element.parentNode);
-            myLibrary.pop();
-        })
+    removeButton.addEventListener("click", () => {
+        myLibrary.splice(myLibrary.indexOf(item), 1);
+        
+    })
+
+    readButton.addEventListener("click", () => {
+        item.read = !item.read;
+
     })
 }
