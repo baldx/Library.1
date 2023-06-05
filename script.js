@@ -19,20 +19,29 @@ let authorInput = form.querySelector("#author");
 let pagesInput = form.querySelector("#number");
 let submitBook = form.querySelector("#submit");
 
-function Book(title, author, pages) {
+const popUpForm = document.querySelector(".popUp");
+
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
 }
 
+submitBook.addEventListener("click", addBookToLibrary());
+addBookBtn.addEventListener("click", () => popUpForm.style.display = "block");
+
 function addBookToLibrary() {
+   
+    popUpForm.style.display = "none";
     let title = titleInput.value;
     let author = authorInput.value;
     let pages = pagesInput.value;
-    let read = getReadValue();
-    let newBook = new Book(title, author, pages, read);
-    library.push(newBook);
+    let newBook = new Book(title, author, pages);
+    myLibrary.push(newBook);
+    form.reset();
 }
+
 
 const getReadValue = () => {
     if (form.querySelector('input[name="read"]:checked').value == "yes") return true;
@@ -56,32 +65,6 @@ readBtn.forEach(element => {
     })
 });
 
- addBookBtn.onclick = () => {
-    library.innerHTML += `
-    <form>
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" required maxlength="50">
-            <label for="author">Author</label>
-            <input type="text" name="author" id="author" required maxlength="50">
-            <label for="pages">Pages</label>
-            <input type="number" name="number" id="number" required min="0">
-            <fieldset class="radiogroup">
-                <legend>Read book?</legend>
-                <label for="yes">
-                    <input type="radio" name="yes" id="yes" value="yes"> Yes
-                </label>
-                <label for="no">
-                    <input type="radio" name="no" id="no" value="no"> No
-                </label>
-            </fieldset>
-            <button type="submit" id="submit">Add book</button>
-        </form>
-    `
-}
-
-submitBook.addEventListener("click", element => {
-    element.preventDefault();
-})
 
 removeBook.forEach(element => {
     element.addEventListener("click", () => {
