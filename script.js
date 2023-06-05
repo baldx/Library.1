@@ -10,7 +10,7 @@ let myLibrary = [
 let readBtn = document.querySelectorAll(".readBtn");
 let addBookBtn = document.querySelector(".addBook");
 let removeBook = document.querySelectorAll(".remove");
-let library = document.querySelector(".library");
+const library = document.querySelector(".library");
 
 
 let form = document.querySelector("form");
@@ -31,8 +31,7 @@ function Book(title, author, pages, read) {
 submitBook.addEventListener("click", addBookToLibrary());
 addBookBtn.addEventListener("click", () => popUpForm.style.display = "block");
 
-function addBookToLibrary() {
-   
+function addBookToLibrary(event) {
     popUpForm.style.display = "none";
     let title = titleInput.value;
     let author = authorInput.value;
@@ -66,9 +65,52 @@ readBtn.forEach(element => {
 });
 
 
-removeBook.forEach(element => {
-    element.addEventListener("click", () => {
-        element.parentNode.remove(element.parentNode);
-        myLibrary.pop();
+
+
+function createBook(item) {
+    const bookDiv = document.createElement("div");
+    const titleDiv = document.createElement("div");
+    const authorDiv = document.createElement("div");
+    const pagesDiv = document.createElement("div");
+    const removeButton = document.createElement("button");
+    const readButton = document.createElement("button");
+
+    bookDiv.classList.add("book");
+    bookDiv.setAttribute("id", myLibrary.indexOf(item));
+
+    titleDiv.textContent = item.title;
+    titleDiv.classList.add("title");
+    bookDiv.appendChild(titleDiv);
+
+    authorDiv.textContent = item.author;
+    authorDiv.classList.add("author");
+    bookDiv.appendChild(authorDiv);
+
+    pagesDiv.textContent = item.pages;
+    pagesDiv.classList.add("pages");
+    bookDiv.appendChild(pagesDiv);
+
+    readButton.classList.add("read");
+    bookDiv.appendChild(readButton);
+    if (item.read === false) {
+    readButton.textContent = "Not Read"; 
+    readButton.style.backgroundColor = "#9336B4";
+    }
+    else {
+    readButton.textContent = "Read";
+    readButton.style.backgroundColor = "#DD58D6";
+    }
+    
+    removeButton.textContent = "Remove";
+    removeButton.setAttribute("id", "removeBtn");
+    bookDiv.appendChild(removeButton);
+
+    library.appendChild(bookDiv);
+
+    removeBook.forEach(element => {
+        element.addEventListener("click", () => {
+            element.parentNode.remove(element.parentNode);
+            myLibrary.pop();
+        })
     })
-})
+}
