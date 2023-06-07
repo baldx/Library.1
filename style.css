@@ -5,30 +5,28 @@
 }
 
 :root {
-    --bg-color: #FFE79B;
-    --btn-hover: #DD58D6;
-    --dark-color: #40128B;
-    --btn-color: #9336B4;
+    --btn-hover: #828E82;
+    --bg: #E0E0E0;
+    --btn-click: #3A606E;
+    --btn-hover-2: #607B7D;
 }
 
 body {
     height: 100vh;
-    background: var(--bg-color);
     display: flex;
     flex-direction: column;
 }
 
 header {
     height: 15vh;
-    background: rgb(175, 175, 190);
     font-size: 5em;
     display: grid;
     justify-items: center;
     align-items: center;
     font-weight: 700;
-    background: var(--dark-color);
-    color: #ffffff;
-    box-shadow: 0px 5px 20px var(--dark-color);
+    background: var(--bg);
+    color: black;
+    box-shadow: 0px 2px 10px var(--bg);
 }
 
 /*+ ADD BTN STYLES*/
@@ -46,21 +44,21 @@ header {
     font-size: 2em;
     font-weight: 500;
     background: transparent;
-    color: var(--dark-color);
+    color: black;
     border: transparent;
     border: 15px;
 }
 
 .addBook:hover {
     color: #ffffff;
-    background: var(--btn-color);
+    background: var(--btn-hover);
     border-radius: 15px;
     transition: 200ms;
 }
 
 .addBook:active {
     transition: 50ms;
-    background: var(--btn-hover);
+    background: var(--btn-click);
 }
 
 /*BOOK STYLES*/
@@ -75,7 +73,7 @@ header {
 }
 
 .book {
-    background: var(--dark-color);
+    background: var(--bg);
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     justify-content: center;
@@ -83,7 +81,7 @@ header {
     font-size: 1.7em;
     padding: 0.7em;
     border-radius: 15px;
-    color: white;
+    color: black;
     font-weight: 700;
     gap: 0.3em;
 }
@@ -104,8 +102,18 @@ header {
     transition: 200ms;
 }
 
+.remove:hover, .read:hover {
+    background: var(--btn-hover-2);
+    transition: 50ms;
+}
+
+.remove:active {
+    background: var(--btn-click);
+    transition: 50ms;
+}
+
 .not-read {
-    background-color: var(--btn-color);
+    background-color: var(--btn-click);
     border-radius: 15px;
     transition: 200ms;
 }
@@ -114,8 +122,8 @@ header {
 
 form {
     box-sizing: border-box;
-    background: var(--dark-color);
-    color: white;
+    background: var(--bg);
+    color: black;
     display: grid;
     grid-template-columns: repeat(1, 1fr 5fr);
     grid-template-rows: repeat(3, 1fr);
@@ -124,6 +132,9 @@ form {
     border-radius: 15px;
     padding: 1em;
     font-weight: 700;
+    border: 2px solid var(--btn-hover);
+    justify-content: center;
+    align-items: center;
 }
 
 input[type="text"], input[type="number"] {
@@ -148,12 +159,16 @@ form button {
 }
 
 input:focus {
-    border: 2px solid var(--btn-hover);
+    border: 2px solid #828E82;
     outline: none;
 }
 
 input:invalid {
     border: 2px solid #8b1232;
+}
+
+input:valid {
+    border: 2px solid #828E82;
 }
 
  .popUp {
@@ -165,3 +180,13 @@ input:invalid {
     overflow: auto;
     width: 30em;
 } 
+
+#submit:hover {
+    background: var(--btn-hover-2);
+    transition: 50ms;
+}
+
+#submit:active {
+    background: var(--btn-click);
+    transition: 50ms;
+}

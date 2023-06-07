@@ -19,6 +19,7 @@ let authorInput = form.querySelector("#author");
 let pagesInput = form.querySelector("#number");
 let readInput = form.getElementsByTagName("read");
 let submitBook = form.querySelector("#submit");
+let body = document.querySelector("body");
 
 const popUpForm = document.querySelector(".popUp");
 
@@ -34,8 +35,12 @@ function Book(title, author, pages, read) {
 submitBook.addEventListener("click", (element) => {
     addBookToLibrary();
     element.preventDefault();
+    // body.style.background = "#FFE79B"
 });
-addBookBtn.addEventListener("click", () => popUpForm.style.display = "block");
+addBookBtn.addEventListener("click", () => {
+    popUpForm.style.display = "block";
+    // body.style.background = "#898065"
+})
 
 function addBookToLibrary() {
     popUpForm.style.display = "none";
@@ -112,11 +117,11 @@ function createBook(item) {
     bookDiv.appendChild(readButton);
     if (item.read === false) {
     readButton.textContent = "Not Read"; 
-    readButton.style.backgroundColor = "#9336B4";
+    readButton.style.backgroundColor = "#3A606E";
     }
     else {
     readButton.textContent = "Read";
-    readButton.style.backgroundColor = "#DD58D6";
+    readButton.style.backgroundColor = "#828E82";
     }
     
     removeButton.textContent = "Remove";
