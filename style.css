@@ -192,3 +192,16 @@ input:valid {
     background: var(--btn-click);
     transition: 50ms;
 }
+
+/*FOOTER*/
+
+footer {
+    margin: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
