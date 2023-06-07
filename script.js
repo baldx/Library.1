@@ -1,8 +1,8 @@
 let myLibrary = [
     {
-        title: "Abdi",
-        author: "Mokandez den tredje",
-        pages: 420,
+        title: "Dale Carnegie",
+        author: "How to win friends and influence people",
+        pages: 214,
         read: true
     }
 ];
