@@ -17,6 +17,7 @@ let form = document.querySelector("form");
 let titleInput = form.querySelector("#title");
 let authorInput = form.querySelector("#author");
 let pagesInput = form.querySelector("#number");
+let readInput = form.getElementsByTagName("read");
 let submitBook = form.querySelector("#submit");
 
 const popUpForm = document.querySelector(".popUp");
@@ -36,11 +37,9 @@ submitBook.addEventListener("click", (element) => {
 });
 addBookBtn.addEventListener("click", () => popUpForm.style.display = "block");
 
-let newBook;
-
 function addBookToLibrary() {
     popUpForm.style.display = "none";
-    let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value);
+    let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, getReadValue());
     myLibrary.push(newBook);
     visual();
     form.reset();
@@ -128,11 +127,12 @@ function createBook(item) {
 
     removeButton.addEventListener("click", () => {
         myLibrary.splice(myLibrary.indexOf(item), 1);
-
+        visual();
     })
 
     readButton.addEventListener("click", () => {
         item.read = !item.read;
-
+        visual();
     })
+
 }
