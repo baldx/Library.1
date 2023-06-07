@@ -28,17 +28,31 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-submitBook.addEventListener("click", addBookToLibrary());
+
+
+submitBook.addEventListener("click", (element) => {
+    addBookToLibrary();
+    element.preventDefault();
+});
 addBookBtn.addEventListener("click", () => popUpForm.style.display = "block");
 
-function addBookToLibrary(event) {
+let newBook;
+
+function addBookToLibrary() {
     popUpForm.style.display = "none";
-    let title = titleInput.value;
-    let author = authorInput.value;
-    let pages = pagesInput.value;
-    let newBook = new Book(title, author, pages);
+    let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value);
     myLibrary.push(newBook);
+    visual();
     form.reset();
+}
+
+function visual() {
+    const books = document.querySelectorAll(".book");
+    books.forEach(book => library.removeChild(book));
+    
+    for (let index = 0; index < myLibrary.length; index++) {
+        createBook(myLibrary[index])
+    }
 }
 
 
@@ -114,7 +128,7 @@ function createBook(item) {
 
     removeButton.addEventListener("click", () => {
         myLibrary.splice(myLibrary.indexOf(item), 1);
-        
+
     })
 
     readButton.addEventListener("click", () => {
