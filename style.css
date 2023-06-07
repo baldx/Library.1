@@ -88,7 +88,9 @@ header {
 
 .title, .author, .pages, .read, .remove {
     justify-self: center;
+    align-items: center;
 }
+
 
 .read, .remove {
     font-size: 1em;
