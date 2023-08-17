@@ -14,7 +14,7 @@ const library = document.querySelector(".library");
 
 
 let form = document.querySelector("form");
-let titleInput = form.querySelector("#title");
+let titleInput = document.querySelector("#title");
 let authorInput = form.querySelector("#author");
 let pagesInput = form.querySelector("#number");
 let readInput = form.getElementsByTagName("read");
@@ -42,8 +42,14 @@ class Book {
 
 
 submitBook.addEventListener("click", (element) => {
-    addBookToLibrary();
-    element.preventDefault();
+
+    if (rules()) element.preventDefault();
+    else {
+        addBookToLibrary();
+        element.preventDefault()
+    }
+
+    
     // body.style.background = "#FFE79B"
 });
 addBookBtn.addEventListener("click", () => {
@@ -57,6 +63,7 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
     visual();
     form.reset();
+    formValidity();
 }
 
 function visual() {
@@ -70,7 +77,12 @@ function visual() {
 
 
 const getReadValue = () => {
-    if (form.querySelector('input[name="read"]:checked').value == "yes") return true;
+    if (form.querySelector('input[name="read"]:checked').value === 'yes') return true
+    else return false;
+}
+
+function rules () {
+    if (titleInput.value === '' || authorInput.value === '' || pagesInput.value === '' || document.querySelector('input[name="read"]:checked').checked === false) return true;
     else return false;
 }
 
@@ -78,6 +90,7 @@ const clearForm = () => {
     titleInput.value = "";
     authorInput.value = "";
     pagesInput.value = "";
+    document.querySelector('input[name="read"]:checked').checked = false;
 }
 
 readBtn.forEach(element => {
@@ -99,10 +112,10 @@ removeBook.forEach(element => {
     })
 })
 
-function createBook(item) {
+function createBook (item) {
     const bookDiv = document.createElement("div");
     const titleDiv = document.createElement("div");
-    const authorDiv = document.createElement("div");
+    const authorDiv = document.createElement('div')
     const pagesDiv = document.createElement("div");
     const removeButton = document.createElement("button");
     const readButton = document.createElement("button");
@@ -149,4 +162,38 @@ function createBook(item) {
         visual();
     })
 
+}
+
+function formValidity () {
+    titleInput.addEventListener('input', () => {
+        if (titleInput.validity.typeMismatch) {
+            titleInput.setCustomValidity("Enter a title!")
+        } else {
+            titleInput.setCustomValidity("")
+        }
+
+        
+    })
+
+    authorInput.addEventListener('input', () => {
+        if (authorInput.validity.typeMismatch) {
+            authorInput.setCustomValidity("Enter an author!")
+        } else {
+            authorInput.setCustomValidity("")
+        }
+    })
+    
+    pagesInput.addEventListener('input', () => {
+        if (pagesInput.validity.typeMismatch) {
+            pagesInput.setCustomValidity("Enter an amount of pages!")
+        } else {
+            pagesInput.setCustomValidity("")
+        }
+    })
+
+    if (form.querySelector('input[name="read"]:checked') = false) {
+        form.querySelector('input[name="read"]:checked').setCustomValidity("Select one of the options")
+    } else {
+        form.querySelector('input[name="read"]:checked').setCustomValidity("")
+    }
 }
